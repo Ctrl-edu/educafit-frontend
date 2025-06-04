@@ -1,0 +1,174 @@
+:root {
+    --onyx: #3F4045;
+    --richBlack: #02111B;
+    --roseRed: #CA2E55;
+    --blanco: #fff;
+    --oldRose: #C78283;
+    --raisinBlack: #30292F;
+    --fuente: 'Quicksand', sans-serif;
+}
+/* Evita el scroll horizontal en toda la página */
+body, html {
+    overflow-x: hidden;
+}
+.perfil-background {
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('../img/bg.jpg') center center/cover no-repeat;
+    z-index: 0;
+}
+
+.perfil-background::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right, rgba(141, 169, 196, 0.5), rgba(19, 64, 116, 0.5));
+    z-index: 1;
+    pointer-events: none;
+}
+
+.perfil-contenedor-formulario {
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.perfil-formulario {
+    width: 100%;
+    padding: 40px 30px;
+    background-color: var(--onyx);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.perfil-texto-formulario h2 {
+    color: var(--roseRed);
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.perfil-texto-formulario p {
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--blanco);
+    margin-bottom: 20px;
+}
+
+.perfil-input label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 12px 0 6px 0;
+    color: var(--blanco);
+}
+
+.perfil-input div {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--blanco);
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.perfil-input input,
+.perfil-input select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--blanco);
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    transition: background 0.2s;
+}
+
+select option {
+    background-color: var(--white);
+    color: var(--onyx);
+}
+
+.perfil-input input:disabled,
+.perfil-input select:disabled {
+    background: rgba(255,255,255,0.2);
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Botones base */
+.boton-actualizar,
+.boton-eliminar-cuenta {
+    min-width: 170px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+    box-shadow: none;
+    outline: none;
+    display: inline-block;
+}
+
+/* Botón actualizar a la derecha */
+.boton-actualizar {
+    background-color: #27ae60;
+    color: #fff;
+    float: right;
+}
+.boton-actualizar:hover {
+    background-color: #219150 !important;
+}
+
+/* Botón eliminar a la izquierda */
+.boton-eliminar-cuenta {
+    background-color: var(--roseRed);
+    color: #fff;
+}
+.boton-eliminar-cuenta:hover {
+    background-color: var(--oldRose);
+}
+
+/* Botón cerrar sesión */
+.boton-cerrar-sesion {
+    background-color: var(--roseRed);
+    color: var(--blanco);
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: background-color .4s;
+}
+.boton-cerrar-sesion:hover {
+    background-color: var(--oldRose);
+}
+
+/* Centrado para cerrar sesión */
+.perfil-input.cerrar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
