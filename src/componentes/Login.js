@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState } from 'react';  //para capturar datos en tiempo real 
 import { login } from '../api/api';
 import '../estilos/Login.css';
 
@@ -14,16 +14,16 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const loginCredentials = {
+        const loginCredentials = {   //agrupo dtos del formulario que voy a enviar 
             correo,
             contraseña,
         };
 
         login(loginCredentials)
             .then((respuesta) => {
-                localStorage.setItem('usuario', JSON.stringify(respuesta.data)); // Guarda los datos del usuario en localStorage
+                localStorage.setItem('usuario', JSON.stringify(respuesta.data)); // Guarda los datos del usuario en localStorage del navegador
                 setMensaje('Inicio de sesión exitoso.');
-                setMensajeExito(true);
+                setMensajeExito(true); // para que me cambie la configuracion del mensaje de respuesta a verde
                 // Limpiar los campos del inicio de sesion exitoso
                 setCorreo('');
                 setContraseña('');
@@ -69,7 +69,7 @@ function Login() {
                     </div>
 
                     {mensaje && (
-                        <div className={`login-mensaje${mensajeExito ? ' exito' : ''}`}> {/* operador ternario para aplicar clase de éxito */}
+                        <div className={`login-mensaje${mensajeExito ? ' exito' : ''}`}>      {/* operador ternario para aplicar clase de éxito */}
                             {mensaje.split('.').map((parte, i) => parte && (
                                 <div key={i}>{parte.trim()}.</div>
                             ))}

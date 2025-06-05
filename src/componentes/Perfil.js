@@ -5,6 +5,7 @@ import { eliminarUsuario } from '../api/api';
 import '../estilos/Perfil.css';
 
 function Perfil() {
+    // variables de estado
     const [usuario, setUsuario] = useState(null);
     const [editando, setEditando] = useState(false);
     const [datosEditados, setDatosEditados] = useState({});
@@ -31,7 +32,7 @@ function Perfil() {
 
     const handleChange = (e) => { // funcion que me permite cambiar datos del perfil
         setDatosEditados({
-            ...datosEditados,
+            ...datosEditados, //operador spread
             [e.target.name]: e.target.value // uso el nombre del campo y su valor para cambiar solo ese dato
         });
     };
@@ -88,57 +89,44 @@ return (
                     <h2>Mi Perfil</h2>
                     <p>Información de tu cuenta</p>
                 </div>
+
                 <div className="perfil-input">
                     <label>Nombre:</label>
-                    <input name='nombre'
-                        value={datosEditados.nombre}
-                        onChange={handleChange}
-                        // solo me he es posible editar si editando es true, cuando hago click en actualizar
-                        disabled={!editando}
-                    />
+                    {/*solo me he es posible editar si editando es true, cuando hago click en actualizar*/}
+                    <input name='nombre' value={datosEditados.nombre} onChange={handleChange} disabled={!editando} />                      
                 </div>
+
                 <div className="perfil-input">
                     <label>Apellido:</label>
-                    <input name='apellido'
-                        value={datosEditados.apellido}
-                        onChange={handleChange}
-                        disabled={!editando}
-                    />
+                    <input name='apellido' value={datosEditados.apellido} onChange={handleChange} disabled={!editando} />                    
                 </div>
+
                 <div className="perfil-input">
                     <label>Género:</label>
-                    <select name='genero'
-                        value={datosEditados.genero}
-                        onChange={handleChange}
-                        disabled={!editando}
-                    >
+                    <select name='genero' value={datosEditados.genero} onChange={handleChange} disabled={!editando} >
                         <option value="masculino">Masculino</option>
                         <option value="femenino">Femenino</option>
                         <option value="otro">Otro</option>
                         <option value="prefiero no decirlo">Prefiero no decirlo</option>
                     </select>
                 </div>
+
                 <div className="perfil-input">
                     <label>Ubicación:</label>
-                    <input name='ubicacion'
-                        value={datosEditados.ubicacion}
-                        onChange={handleChange}
-                        disabled={!editando}
-                    />
+                    <input name='ubicacion' value={datosEditados.ubicacion} onChange={handleChange} disabled={!editando} />  
                 </div>
+
                 <div className="perfil-input">
                     <label>Objetivo de salud:</label>
-                    <select name='objetivos'
-                        value={datosEditados.objetivos}
-                        onChange={handleChange}
-                        disabled={!editando}
-                    >   <option value="">Selecciona un objetivo</option>
+                    <select name='objetivos' value={datosEditados.objetivos} onChange={handleChange} disabled={!editando} > 
+                        <option value="">Selecciona un objetivo</option>
                         <option value="perder_peso">Perder peso</option>
                         <option value="ganar_musculo">Ganar musculo</option>
                         <option value="mejorar_resistencia">Mejorar Resistencia</option>
                         <option value="mantener_salud">Mantener salud</option>
                     </select>
                 </div>
+
                 <div className="perfil-input">
                     <label>Correo electrónico:</label>
                     <input name='correo'
@@ -162,6 +150,7 @@ return (
                         </button>
                     )}
                 </div>
+                {/* Botón para cerrar sesión */}
                 <div className="perfil-input cerrar">
                     <button type='button' onClick={cerrarSesion} className="boton-cerrar-sesion">
                         Cerrar Sesión

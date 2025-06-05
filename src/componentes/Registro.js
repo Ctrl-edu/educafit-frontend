@@ -1,6 +1,6 @@
 import { register } from '../api/api.js';
 import React, { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect } from 'react';   // para manejar efectos secundarios
 import { useNavigate } from 'react-router-dom';
 import '../estilos/Registro.css';
 
@@ -61,16 +61,15 @@ function Registro() {
             });
     };
 
-    useEffect(() => {
+    useEffect(() => {  
         if (mensaje) {
-            const timer = setTimeout(() => {
+            const timer = setTimeout(() => {   // Temporizador para redirigir después de mostrar el mensaje
                 navigate('/login');
             }, 6000);
 
             return () => clearTimeout(timer); // Limpieza
         }
-    }, [mensaje, navigate]);
-
+    }, [mensaje, navigate]); 
 
 
     return (
@@ -131,8 +130,10 @@ function Registro() {
                         <input type="password" id="confirmarContraseña" placeholder="Repite tu contraseña"
                             value={confirmarContraseña} onChange={(e) => setConfirmarContraseña(e.target.value)} />
                     </div>
+
+
                     {mensaje && (
-                        <div className={`registro-mensaje${mensajeExito ? ' exito' : ''}`}> {/* operador ternario para aplicar clase de éxito */}
+                        <div className={`registro-mensaje${mensajeExito ? ' exito' : ''}`}>       {/* operador ternario para aplicar clase de éxito */}
                             {mensaje.split('.').map((parte, i) => parte && (
                                 <div key={i}>{parte.trim()}.</div>
                             ))}
